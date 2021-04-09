@@ -1,440 +1,676 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
-
-<script class="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
-  </script>
-
-  <meta name="description" content="技术分享与生活随笔">
-<meta property="og:type" content="website">
-<meta property="og:title" content="smartwange personal site">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="smartwange personal site">
-<meta property="og:description" content="技术分享与生活随笔">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="smartwange">
-<meta name="twitter:card" content="summary">
+    <meta charset="utf-8">
+    <meta name="keywords" content="smartwange personal site">
+    <meta name="description" content="技术分享与生活随笔">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<link rel="canonical" href="http://example.com/">
+    <title>smartwange personal site</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="smartwange personal site" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
-<script class="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>smartwange personal site</title>
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">smartwange personal site</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
   
-
-
-
-
-
-
-  <noscript>
-  <style>
-  body { margin-top: 2rem; }
-
-  .use-motion .menu-item,
-  .use-motion .sidebar,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">smartwange personal site</h1>
-      <i class="logo-line"></i>
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
     </a>
-      <p class="site-subtitle" itemprop="description">(-_-)</p>
-  </div>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
 
+<div id="mobile-nav" class="side-nav sidenav">
 
-
-
-
-
-
-</div>
+    <div class="mobile-head bg-color">
         
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">smartwange</p>
-  <div class="site-description" itemprop="description">技术分享与生活随笔</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </section>
+        <div class="logo-name">smartwange personal site</div>
+        <div class="logo-desc">
+            
+            技术分享与生活随笔
+            
+        </div>
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner index posts-expand">
-      
-
-      
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/09/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="smartwange">
-      <meta itemprop="description" content="技术分享与生活随笔">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="smartwange personal site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
           
-            <a href="/2021/04/09/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">vue响应式原理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-09 10:51:59 / 修改时间：10:52:19" itemprop="dateCreated datePublished" datetime="2021-04-09T10:51:59+08:00">2021-04-09</time>
-    </span>
-
-  
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
 </div>
+
 
         </div>
-      </header>
+
+        
+    </nav>
+
+</header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>单步调试F11 ,直接到下一步F10，F8跳到下一个断点的位置</p>
-</blockquote>
-<h1 id="数据响应式原理"><a href="#数据响应式原理" class="headerlink" title="数据响应式原理"></a>数据响应式原理</h1><h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty"></a>Object.defineProperty</h2><blockquote>
-<p>不兼容ie8，且不可shim降解<br>针对对象的属性做数据劫持，多个属性，需要循环</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> vm = &#123;&#125;</span><br><span class="line">  <span class="keyword">let</span> data = &#123;</span><br><span class="line">    msg: <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(vm, <span class="string">&#x27;msg&#x27;</span>, &#123;</span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> data.msg</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">newVal</span>)</span> &#123;</span><br><span class="line">      data.msg = newVal</span><br><span class="line">      <span class="built_in">document</span>.body.innerText = data.msg</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(vm.msg)</span><br><span class="line">  vm.msg = <span class="string">&quot;hello world&quot;</span></span><br><span class="line">  <span class="built_in">console</span>.log(vm.msg)</span><br></pre></td></tr></table></figure>
-<h2 id="new-Proxy"><a href="#new-Proxy" class="headerlink" title="new Proxy"></a>new Proxy</h2><blockquote>
-<p>针对对象做代理，性能比之前的高</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    msg: <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> vm = <span class="keyword">new</span> <span class="built_in">Proxy</span>(data, &#123;</span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params">target, el</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> target[el]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">target, el, newVal</span>)</span> &#123;</span><br><span class="line">      target[el] = newVal</span><br><span class="line">      <span class="built_in">document</span>.body.innerText = data.msg</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">console</span>.log(vm.msg)</span><br><span class="line">  vm.msg = <span class="string">&#x27;hello world!&#x27;</span></span><br></pre></td></tr></table></figure>
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
 
-<h1 id="发布订阅、观察者模式"><a href="#发布订阅、观察者模式" class="headerlink" title="发布订阅、观察者模式"></a>发布订阅、观察者模式</h1><h2 id="发布（emit）订阅-on-事件中心-new-ddd"><a href="#发布（emit）订阅-on-事件中心-new-ddd" class="headerlink" title="发布（emit）订阅(on)事件中心(new ddd)"></a>发布（emit）订阅(on)事件中心(new ddd)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventEmitter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.subs = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 订阅时，如何之前已经有了click，那么就直接在后面数组中加上事件队列，如何时新的事件就要建立新的数组</span></span><br><span class="line">    $on(eventType, handler) &#123;</span><br><span class="line">      <span class="comment">//如果存在这个事件就等于之前的那个，如果不存在就是一个空数组</span></span><br><span class="line">      <span class="built_in">this</span>.subs[eventType] = <span class="built_in">this</span>.subs[eventType] || []</span><br><span class="line">      <span class="built_in">this</span>.subs[eventType].push(handler)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//触发事件，如果this.subs中有这个事件，就依次调用，如果没有就什么也不做</span></span><br><span class="line">    $emit(eventType) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">this</span>.subs[eventType]) &#123;</span><br><span class="line">        <span class="built_in">this</span>.subs[eventType].forEach(<span class="function"><span class="params">handler</span> =&gt;</span> &#123;</span><br><span class="line">          handler()</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 测试</span></span><br><span class="line">  <span class="keyword">let</span> em = <span class="keyword">new</span> EventEmitter()</span><br><span class="line">  em.$on(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;click1&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  em.$on(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;click2&#x27;</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  em.$emit(<span class="string">&#x27;click&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><blockquote>
-<p>和发布订阅不同，观察者模式只有发布者和订阅者，没有事件中心，并且发布者需要知道订阅者的存在<br>发布订阅模式隔离了发布者和订阅者，更加灵活，而观察者模式发布订阅者相互依赖   </p>
-</blockquote>
-<p>1、这里订阅者又叫观察者</p>
-<ul>
-<li>所有的观察者都有一个update方法，</li>
-<li>在vue的响应机制中数据的变化就会调用update方法，update内部就会更新视图</li>
-<li>这个update方法是提供给发布者调用的   </li>
-</ul>
-<p> 2、发布者又叫目标</p>
-<ul>
-<li>发布者内部记录所有的订阅者，事件发生时，是由发布者通知所有的订阅者，     发布者内部属性：</li>
-<li>subs数组：存储所有的订阅者，元素是所有依赖该事件的观察者</li>
-<li>addsub(): 增加观察者的方法</li>
-<li>notify():当事件发生，调用所有观察者的update方法 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发布者-目标</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 记录所有的订阅者</span></span><br><span class="line">      <span class="built_in">this</span>.subs = []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">addsub</span>(<span class="params">sub</span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 将观察者添加到数组中，需要判断是否存在而且要有update方法</span></span><br><span class="line">      <span class="keyword">if</span> (sub &amp;&amp; sub.update) &#123;</span><br><span class="line">        <span class="built_in">this</span>.subs.push(sub)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 发布通知</span></span><br><span class="line">    <span class="function"><span class="title">notify</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="comment">// 遍历所有的订阅者，并调用他们的update方法</span></span><br><span class="line">      <span class="built_in">this</span>.subs.forEach(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">        sub.update()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 订阅者-观察者</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">update</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;1111111111&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 测试</span></span><br><span class="line">  <span class="keyword">let</span> dep = <span class="keyword">new</span> Dep()</span><br><span class="line">  <span class="keyword">let</span> watcher = <span class="keyword">new</span> Watcher()</span><br><span class="line">  dep.addsub(watcher)</span><br><span class="line">  dep.notify()</span><br></pre></td></tr></table></figure>
-<h1 id="Vue响应式原理"><a href="#Vue响应式原理" class="headerlink" title="Vue响应式原理"></a>Vue响应式原理</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://img-blog.csdnimg.cn/20210402160221197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIxMzgzOTc3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title="">
-                </div>
-                <div class="image-caption">在这里插入图片描述</div>
-            </figure>
-通过代码模拟，以上过程<br>index.html<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; count &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">title</span>=<span class="string">&quot;more&quot;</span>&gt;</span>v-text<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-text</span>=<span class="string">&quot;msg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>v-model<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&#x27;msg&#x27;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&#x27;count&#x27;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-sd</span>=<span class="string">&quot;msg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./src/Dep.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./src/Watcher.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./src/Compiler.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./src/Observer.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./src/Vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line">    data: &#123;</span><br><span class="line"><span class="javascript">      msg: <span class="string">&#x27;hello world&#x27;</span>,</span></span><br><span class="line">      count: 1,</span><br><span class="line">      person: &#123;</span><br><span class="line"><span class="javascript">        name: <span class="string">&#x27;zhangsan&#x27;</span></span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(vm.msg)</span></span><br><span class="line"><span class="javascript">  <span class="comment">// vm.msg = &#123;</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">//   meg: &#x27;sdsds&#x27;</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// &#125;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vue</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 1.通过属性保存选项中的数据</span></span><br><span class="line">    <span class="built_in">this</span>.$options=options || &#123;&#125; <span class="comment">//如果调用的时候传入了options就赋值给它，没有用空对象</span></span><br><span class="line">    <span class="built_in">this</span>.$data=options.data || &#123;&#125;</span><br><span class="line">    <span class="comment">// options要传入的对象可能是字符串的形式，如果是字符串就是一个选择器，也可能是一个Dom对象，</span></span><br><span class="line">    <span class="built_in">this</span>.$el = <span class="keyword">typeof</span> options.el ===<span class="string">&#x27;string&#x27;</span>?<span class="built_in">document</span>.querySelector(options.el):options.el</span><br><span class="line">    <span class="comment">// 2.把data中的成员转换成getter和setter注入到Vue实例中</span></span><br><span class="line">    <span class="built_in">this</span>._proxyData(<span class="built_in">this</span>.$data)</span><br><span class="line">    <span class="comment">// 3.调用Observer对象，监听数据的变化</span></span><br><span class="line">    <span class="keyword">new</span> Observer(<span class="built_in">this</span>.$data)</span><br><span class="line">    <span class="comment">// 4.调用compiler对象，解析指令和差值表达式</span></span><br><span class="line">    <span class="keyword">new</span> Compiler(<span class="built_in">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 代理数据，让vue代理data中的属性</span></span><br><span class="line">  <span class="function"><span class="title">_proxyData</span>(<span class="params">data</span>)</span>&#123; </span><br><span class="line">    <span class="comment">// 遍历data中所有的属性</span></span><br><span class="line">    <span class="built_in">Object</span>.keys(data).forEach(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">//然后调用defineProperty将属性注入到实例中</span></span><br><span class="line">      <span class="comment">// 此处的this指向的就是Vue实例</span></span><br><span class="line">      <span class="built_in">Object</span>.defineProperty(<span class="built_in">this</span>,el,&#123;</span><br><span class="line">        configurable:<span class="literal">true</span>,</span><br><span class="line">        enumerable:<span class="literal">true</span>,</span><br><span class="line">        <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="comment">// get方法中访问数据，而数据是在data中存储的，Vue实例本身是 不存储 数据的</span></span><br><span class="line">          <span class="comment">// 直接返回data中对应的属性的值</span></span><br><span class="line">          <span class="keyword">return</span> data[el]</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">set</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(value===data[el])&#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">          &#125;</span><br><span class="line">          data[el]=value</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Observer"><a href="#Observer" class="headerlink" title="Observer"></a>Observer</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 希望通过这个类创建完对象之后，立即把data中的所有属性转换成getter setter</span></span><br><span class="line">    <span class="built_in">this</span>.walk(data)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">walk</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//1.需要判断data是否是空值，是否是对象，保证代码健壮性</span></span><br><span class="line">    <span class="keyword">if</span>(!data || <span class="keyword">typeof</span> data !== <span class="string">&#x27;object&#x27;</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2.遍历data，调用defineReactive</span></span><br><span class="line">    <span class="built_in">Object</span>.keys(data).forEach(<span class="function"><span class="params">key</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.defineReactive(data,key,data[key])</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// obj ：data对象，key属性，value属性对应的值，</span></span><br><span class="line">  <span class="function"><span class="title">defineReactive</span>(<span class="params">obj,key,value</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">// 负责收集依赖,并发送通知</span></span><br><span class="line">    <span class="keyword">let</span> dep = <span class="keyword">new</span> Dep( )</span><br><span class="line">    <span class="comment">// 如果value是对象，就要将对象中的属性转换成响应式的</span></span><br><span class="line">    <span class="built_in">this</span>.walk(value)</span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(obj,key,&#123;</span><br><span class="line">      configurable:<span class="literal">true</span>,</span><br><span class="line">      enumerable:<span class="literal">true</span>,</span><br><span class="line">      <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="comment">//收集依赖，首先要判断Dep是否有target属性，这个属性在watcher对象中添加</span></span><br><span class="line">         Dep.target&amp;&amp;dep.addSubs(Dep.target)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果用obj[key],会出现堆栈溢出错误，因为每次访问obj[key]都会调用get方法，从而出现死递归</span></span><br><span class="line">        <span class="comment">// 当defineReactive调用完成之后，val是一个参数局部变量，值应该被释放掉，但是在实例化后可以被打印，</span></span><br><span class="line">        <span class="comment">// 这里的obj就是data对象，是vue的$data属性，$data引用了get方法，就是外部对get方法有引用，而get用到了value，此处发生了闭包，所有这个属性没有被释放掉</span></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="title">set</span>(<span class="params">newVal</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(newVal===value)&#123;</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        value=newVal</span><br><span class="line">        <span class="comment">// 如果新赋值的value是对象，要将value中的属性转换成响应式的</span></span><br><span class="line">        <span class="comment">// 这里的this指向data</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>)</span><br><span class="line">        that.walk(value)</span><br><span class="line">        <span class="comment">// 发送通知</span></span><br><span class="line">        dep.notify()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Compiler"><a href="#Compiler" class="headerlink" title="Compiler"></a>Compiler</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Compiler</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">vm</span>)</span>&#123;  <span class="comment">//传入vm就是vue的实例</span></span><br><span class="line">    <span class="built_in">this</span>.vm=vm</span><br><span class="line">    <span class="built_in">this</span>.el=vm.$el</span><br><span class="line">    <span class="comment">// 当调用Compiler创建compiler对象时会立即开始编译模板</span></span><br><span class="line">    <span class="built_in">this</span>.compile(<span class="built_in">this</span>.el)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 编译模板， 处理文本节点和元素节点</span></span><br><span class="line">  <span class="function"><span class="title">compile</span>(<span class="params">el</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 遍历el中的所有的节点，childNodes是一个伪数组</span></span><br><span class="line">    <span class="keyword">let</span> childNodes = el.childNodes</span><br><span class="line">    <span class="built_in">Array</span>.from(childNodes).forEach(<span class="function"><span class="params">node</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">// 处理文本节点</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">this</span>.isTextNode(node))&#123;</span><br><span class="line">        <span class="built_in">this</span>.compileText(node)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//处理元素节点</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">this</span>.isElementNode(node))&#123;</span><br><span class="line">        <span class="built_in">this</span>.compileElement(node)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 判断node节点是否有子节点，如果有子节点，有子节点要递归调用compile</span></span><br><span class="line">      <span class="keyword">if</span>(node.childNodes &amp;&amp; node.childNodes.length)&#123;</span><br><span class="line">        <span class="built_in">this</span>.compile(node)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 编译元素节点，处理指令</span></span><br><span class="line">  <span class="function"><span class="title">compileElement</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 遍历dom的所有属性节点，判断是否是指令</span></span><br><span class="line">    <span class="comment">// console.log(node.attributes)</span></span><br><span class="line">    <span class="built_in">Array</span>.from(node.attributes).forEach(<span class="function"><span class="params">attr</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> attrName = attr.name</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">this</span>.isDirective(attrName))&#123;</span><br><span class="line">        attrName=attrName.substr(<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">let</span> key = attr.value</span><br><span class="line">        <span class="built_in">this</span>.update(node,key,attrName)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params">node,key,attrName</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> updateFn = <span class="built_in">this</span>[attrName+<span class="string">&#x27;Updater&#x27;</span>]</span><br><span class="line">    <span class="comment">// updateFn &amp;&amp; updateFn(node,this.vm[key],key)</span></span><br><span class="line">    <span class="comment">//updateFn函数中的this指向是 undefine,而不是update需要call方法改变this指向update,</span></span><br><span class="line">    <span class="comment">// 而update的调用者是compiler，这样间接的，updateFn中的thist指向也是compiler</span></span><br><span class="line">    updateFn&amp;&amp;updateFn.call(<span class="built_in">this</span>,node,<span class="built_in">this</span>.vm[key],key)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理v-text指令</span></span><br><span class="line">  <span class="function"><span class="title">textUpdater</span>(<span class="params">node,value,key</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// console.log(this)  //之前是undefined，通过call改变this指向，现在是compiler</span></span><br><span class="line">    node.textContent = value</span><br><span class="line">    <span class="keyword">new</span> Watcher(<span class="built_in">this</span>.vm,key,<span class="function">(<span class="params">newVal</span>)=&gt;</span>&#123;</span><br><span class="line">      node.textContent = newVal</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// v-model</span></span><br><span class="line">  <span class="function"><span class="title">modelUpdater</span>(<span class="params">node,value,key</span>)</span>&#123;</span><br><span class="line">    node.value = value</span><br><span class="line">    <span class="keyword">new</span> Watcher(<span class="built_in">this</span>.vm,key,<span class="function">(<span class="params">newVal</span>)=&gt;</span>&#123;</span><br><span class="line">      node.value = newVal</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//双向绑定</span></span><br><span class="line">    node.addEventListener(<span class="string">&#x27;input&#x27;</span>,<span class="function">()=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.vm[key] = node.value</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//处理文本节点，就是处理差值表达式</span></span><br><span class="line">  <span class="function"><span class="title">compileText</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// dir是将后面的变量以对象的形式打印出来</span></span><br><span class="line">    <span class="comment">// console.dir(node)</span></span><br><span class="line">    <span class="comment">// 判断文本节点是否是差值表达式 &#123;&#123;  &#125;&#125;</span></span><br><span class="line">    <span class="comment">// .+?任意多字符以贪婪模式今早结束匹配，（）分组提取变量</span></span><br><span class="line">    <span class="keyword">let</span> reg=<span class="regexp">/\&#123;\&#123;(.+?)\&#125;\&#125;/</span></span><br><span class="line">    <span class="keyword">let</span> value =  node.textContent</span><br><span class="line">    <span class="keyword">if</span>(reg.test(value))&#123;</span><br><span class="line">      <span class="keyword">let</span> key = <span class="built_in">RegExp</span>.$1.trim()  <span class="comment">//获取第一个分组内容</span></span><br><span class="line">      <span class="comment">//将差值表达式替换成属性对应的值 重新赋值给文本节点</span></span><br><span class="line">      <span class="comment">// reg正则对象，this.vm就是实例化对象</span></span><br><span class="line">      node.textContent = value.replace(reg,<span class="built_in">this</span>.vm[key]) </span><br><span class="line">      <span class="comment">//创建watcher对象，当数据改变更新视图</span></span><br><span class="line">      <span class="keyword">new</span> Watcher(<span class="built_in">this</span>.vm,key,<span class="function">(<span class="params">newVal</span>)=&gt;</span>&#123;</span><br><span class="line">        node.textContent = newVal</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断元素的属性名字，是否是指令 是否是v-开头</span></span><br><span class="line">  <span class="function"><span class="title">isDirective</span>(<span class="params">attrName</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> attrName.startsWith(<span class="string">&#x27;v-&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断传入的节点是否是文本节点, nodeType 1是元素节点，3是文本节点</span></span><br><span class="line">  <span class="function"><span class="title">isTextNode</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> node.nodeType===<span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 判断这个节点是否是元素节点</span></span><br><span class="line">  <span class="function"><span class="title">isElementNode</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> node.nodeType===<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Watcher"><a href="#Watcher" class="headerlink" title="Watcher"></a>Watcher</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">vm,key,cb</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.vm = vm</span><br><span class="line">    <span class="comment">// data中的属性名称</span></span><br><span class="line">    <span class="built_in">this</span>.key = key</span><br><span class="line">    <span class="comment">// 回调函数负责更新视图</span></span><br><span class="line">    <span class="built_in">this</span>.cb = cb</span><br><span class="line">    <span class="comment">//创建watcher对象时，要把当前的watcher对象添加到dep的subs数组中</span></span><br><span class="line">    <span class="comment">//把当前的watcher对象记录到Dep的target的静态属性中</span></span><br><span class="line">    Dep.target = <span class="built_in">this</span></span><br><span class="line">    <span class="comment">//触发get方法，在get方法中调用addSub ，访问vm某个属性时自动会调用get方法</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.oldVal = vm[key]</span><br><span class="line"></span><br><span class="line">    <span class="comment">//当把Dep.target添加之后需要置为空，防止重复添加</span></span><br><span class="line">    Dep.target = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 负责当数据发生变化时，更新视图</span></span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> newVal = <span class="built_in">this</span>.vm[<span class="built_in">this</span>.key]</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">this</span>.oldVal === newVal)&#123;</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.cb(newVal)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Dep"><a href="#Dep" class="headerlink" title="Dep"></a>Dep</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// subs数组存储所有的观察者</span></span><br><span class="line">    <span class="built_in">this</span>.subs = []</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 添加观察者</span></span><br><span class="line">  <span class="function"><span class="title">addSubs</span>(<span class="params">sub</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sub&amp;&amp;sub.update)&#123;</span><br><span class="line">      <span class="built_in">this</span>.subs.push(sub)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 发送通知</span></span><br><span class="line">  <span class="function"><span class="title">notify</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.subs.forEach(<span class="function"><span class="params">sub</span>=&gt;</span>&#123;</span><br><span class="line">      sub.update()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
 
-      
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
+
+    #prev-cover i {
+        margin-right: 3px;
+    }
+
+    #next-cover i {
+        margin-left: 3px;
+    }
+
+    .carousel-control:hover {
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
+    }
+</style>
+
+
+
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item red white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                (-_-)
+                
+            </div>
+
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
+        </div>
     </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/09/welcome/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="smartwange">
-      <meta itemprop="description" content="技术分享与生活随笔">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="smartwange personal site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/09/welcome/" class="post-title-link" itemprop="url">base64与md5混合编码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-09 10:30:28 / 修改时间：10:50:35" itemprop="dateCreated datePublished" datetime="2021-04-09T10:30:28+08:00">2021-04-09</time>
-    </span>
-
-  
 </div>
 
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42420703/article/details/81384901">https://blog.csdn.net/weixin_42420703/article/details/81384901</a><br><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6291e42d0101gq2f.html">http://blog.sina.com.cn/s/blog_6291e42d0101gq2f.html</a></p>
-</blockquote>
-<h2 id="英文dog进行base64编码过程"><a href="#英文dog进行base64编码过程" class="headerlink" title="英文dog进行base64编码过程"></a>英文dog进行base64编码过程</h2><p>  1、一个字节8位，d o g 通过转换为unicode再转化为二进制（str.charCodeAt(0).toString(2)）对照找到对应的8位二进制表示方法<br>  a 97    d 100  o  111   g  103<br>0110 0100<br>0110 1111<br>0110 0111<br>2、将24位每份6位进行分割<br>011001   000110    111101    100111<br>3、再将上面的分组改为标准的8位字节，每组前加上00<br>00011001    00000110    00111101    00100111<br>4、在将上面的二进制分别转换位10进制   (<code>0b$&#123;el&#125;</code>-0b0).toString(10)<br>25  6   61  39<br>5、base64 从0开始分别找到对应位置的字符<br>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789=/<br>str.charAt(25) = Z<br>str.charAt(6) = G<br>str.charAt(61) = 9<br>str.charAt(39) = n<br>6、dog通过base64编码后是ZG9n<br>7、通过js自带方法btoa、atob处理<br>编码 btoa(‘dog’) = ‘ZG9n’<br>解码 atob(‘ZG9n’) = ‘dog’</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Base64 = &#123;</span><br><span class="line">	_keyStr: <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&quot;</span>,</span><br><span class="line">	encode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> n, r, i, s, o, u, a;</span><br><span class="line">		<span class="keyword">var</span> f = <span class="number">0</span>;</span><br><span class="line">		e = Base64._utf8_encode(e);</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">		<span class="keyword">while</span> (f &lt; e.length) &#123;</span><br><span class="line">      <span class="comment">// 通过encode(&#x27;dog&#x27;)理解</span></span><br><span class="line">      <span class="comment">// 实现了一次自增，先计算后自增</span></span><br><span class="line">			n = e.charCodeAt(f++);   <span class="comment">// f :0</span></span><br><span class="line">			r = e.charCodeAt(f++);   <span class="comment">// f:1</span></span><br><span class="line">			i = e.charCodeAt(f++);   <span class="comment">// f: 2</span></span><br><span class="line">      <span class="comment">// console.log(n,r,i)  //100 111 103</span></span><br><span class="line">			s = n &gt;&gt; <span class="number">2</span>;  <span class="comment">// 位运算右移2位，相当于除以2的2次方  s= 25</span></span><br><span class="line">      <span class="comment">// 100和3的与计算 两个位都为1时，结果才为1，100（110 0100）&amp; 3（00 0011）结果是0</span></span><br><span class="line">      <span class="comment">// 0左移4位乘以2的4次方，0</span></span><br><span class="line">      <span class="comment">// r 此时是111右移4位除16取整结果是 6</span></span><br><span class="line">      <span class="comment">// o = 0(0 0000) | 6(0 0110) = 0110   |或 两个位都为0时，结果才为0</span></span><br><span class="line">			o = (n &amp; <span class="number">3</span>) &lt;&lt; <span class="number">4</span> | r &gt;&gt; <span class="number">4</span>; </span><br><span class="line">      <span class="comment">// r &amp; 15 = 15 ； 15&lt;&lt;2 =15*4=60; 103&gt;&gt;6 =103/64 = 1; 60(111100) | 1(0001) = 61(111101)</span></span><br><span class="line">			u = (r &amp; <span class="number">15</span>) &lt;&lt; <span class="number">2</span> | i &gt;&gt; <span class="number">6</span>;</span><br><span class="line">      <span class="comment">// 103 &amp; 63 = 39</span></span><br><span class="line">			a = i &amp; <span class="number">63</span>;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">isNaN</span>(r)) &#123;</span><br><span class="line">				u = a = <span class="number">64</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isNaN</span>(i)) &#123;</span><br><span class="line">				a = <span class="number">64</span></span><br><span class="line">			&#125;</span><br><span class="line">			t = t + <span class="built_in">this</span>._keyStr.charAt(s) + <span class="built_in">this</span>._keyStr.charAt(o) + <span class="built_in">this</span>._keyStr.charAt(u) + <span class="built_in">this</span>._keyStr.charAt(a)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;,</span><br><span class="line">	decode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> n, r, i;</span><br><span class="line">		<span class="keyword">var</span> s, o, u, a;</span><br><span class="line">		<span class="keyword">var</span> f = <span class="number">0</span>;</span><br><span class="line">		e = e.replace(<span class="regexp">/[^A-Za-z0-9+/=]/g</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">		<span class="keyword">while</span> (f &lt; e.length) &#123;</span><br><span class="line">			s = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			o = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			u = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			a = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			n = s &lt;&lt; <span class="number">2</span> | o &gt;&gt; <span class="number">4</span>;</span><br><span class="line">			r = (o &amp; <span class="number">15</span>) &lt;&lt; <span class="number">4</span> | u &gt;&gt; <span class="number">2</span>;</span><br><span class="line">			i = (u &amp; <span class="number">3</span>) &lt;&lt; <span class="number">6</span> | a;</span><br><span class="line">			t = t + <span class="built_in">String</span>.fromCharCode(n);</span><br><span class="line">			<span class="keyword">if</span> (u != <span class="number">64</span>) &#123;</span><br><span class="line">				t = t + <span class="built_in">String</span>.fromCharCode(r)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (a != <span class="number">64</span>) &#123;</span><br><span class="line">				t = t + <span class="built_in">String</span>.fromCharCode(i)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		t = Base64._utf8_decode(t);</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;,</span><br><span class="line">	_utf8_encode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		e = e.replace(<span class="regexp">/rn/g</span>, <span class="string">&quot;n&quot;</span>);</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> n = <span class="number">0</span>; n &lt; e.length; n++) &#123;</span><br><span class="line">			<span class="keyword">var</span> r = e.charCodeAt(n);  <span class="comment">//得到每一个字符的Unicode编码，如a 97</span></span><br><span class="line">			<span class="keyword">if</span> (r &lt; <span class="number">128</span>) &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r)</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (r &gt; <span class="number">127</span> &amp;&amp; r &lt; <span class="number">2048</span>) &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &gt;&gt; <span class="number">6</span> | <span class="number">192</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &gt;&gt; <span class="number">12</span> | <span class="number">224</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &gt;&gt; <span class="number">6</span> &amp; <span class="number">63</span> | <span class="number">128</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;,</span><br><span class="line">	_utf8_decode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">var</span> r = c1 = c2 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (n &lt; e.length) &#123;</span><br><span class="line">			r = e.charCodeAt(n);</span><br><span class="line">			<span class="keyword">if</span> (r &lt; <span class="number">128</span>) &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r);</span><br><span class="line">				n++</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (r &gt; <span class="number">191</span> &amp;&amp; r &lt; <span class="number">224</span>) &#123;</span><br><span class="line">				c2 = e.charCodeAt(n + <span class="number">1</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode((r &amp; <span class="number">31</span>) &lt;&lt; <span class="number">6</span> | c2 &amp; <span class="number">63</span>);</span><br><span class="line">				n += <span class="number">2</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				c2 = e.charCodeAt(n + <span class="number">1</span>);</span><br><span class="line">				c3 = e.charCodeAt(n + <span class="number">2</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode((r &amp; <span class="number">15</span>) &lt;&lt; <span class="number">12</span> | (c2 &amp; <span class="number">63</span>) &lt;&lt; <span class="number">6</span> | c3 &amp; <span class="number">63</span>);</span><br><span class="line">				n += <span class="number">3</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Base64.encode(<span class="string">&#x27;dog&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Base64 .encode先把要加密的字符串转换位utf-8的格式，然后对字符串进行遍历，每三个一组，每组每个字符用8位二进制表示，切割成每6位一份，所以会有4份对应函数中的4个变量 s  o  u  a<br>然后每组前添00，相当于位运算中&gt;&gt;2,  再转换位10进制，通过charAt计算结果</p>
-</blockquote>
-<hr>
-<pre><code>-  从结果看，分成4组后，s  第一组右移2位就是结果中的第一个值，
--  第二值o 要从前一个值中继承末尾的两位，通过判断和3（0011）与&amp;关系取得，然后再左移4位(左边4个0)变成6位的二进制，通过r &gt;&gt; 4左边添加4个0获取第二个字符的前四位是0的8位2进制，//  0110 1111 &gt;&gt; 4 = 111/16 = 0110  演变： 0000 0110，再通过 或| 计算保留二进制中的1
--   第三个值 u同o的原理
--  第四个值 a ，每三字符一个循环，每个字符8位二进制，然后再分成每6位一个字段，3*8 = 24 = 6*4，所以最后一个字符不用挪用其他的字符二进制表示  i &amp; 63；
-- 但是如果这个字符串只有2位，根据base64编码，最后一位需要补=，
-- i = e.charCodeAt(f++);此处的i就是NaN，就是64刚好是最后一位 =
-</code></pre>
-<h2 id="base64与md5混合编码"><a href="#base64与md5混合编码" class="headerlink" title="base64与md5混合编码"></a>base64与md5混合编码</h2><p>1、通过npm包 blueimp-md5 将要编码的字符串转换为32位的16进制<br>2、将32位密文拆分位16个2位16进制数组，接下来把所有数组中的16进制数转换成8位2进制数，然后将16个8位2进制数组连接起来形成一个128位二进制数；（再将数组中每个元素的16进制转换为2进制   得到16个8位的二进制<br>）<br>3、第三步，从第二步生成的128位2进制数每次截取6位并补全为8位2进制数，按照8位2进制数所代表的1O进制索引查找Base64编码表，得到对应的密文。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"><span class="comment">// 1.通过md5将test字符串转换为32位的16进制</span></span><br><span class="line"><span class="keyword">const</span> str = md5(<span class="string">&#x27;test&#x27;</span>) <span class="comment">//098f6bcd4621d373cade4e832627b4f6  </span></span><br><span class="line"><span class="comment">// 2.将32位转换为 16个 2位的16进制</span></span><br><span class="line"><span class="keyword">let</span> list = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> newList = []</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span> ;i&lt;list.length;)&#123;</span><br><span class="line">   newList.push(list.splice(i,<span class="number">2</span>).join(<span class="string">&#x27;&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 3.再将数组中每个元素的16进制转换为2进制   得到16个8位的二进制</span></span><br><span class="line"><span class="keyword">let</span> res = newList.map(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> item1= (<span class="string">`0x<span class="subst">$&#123;el.charAt(<span class="number">0</span>)&#125;</span>`</span>-<span class="number">0x0</span>).toString(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">let</span> item2= (<span class="string">`0x<span class="subst">$&#123;el.charAt(<span class="number">1</span>)&#125;</span>`</span>-<span class="number">0x0</span>).toString(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">if</span>(item1.length&lt;<span class="number">4</span>)&#123;</span><br><span class="line">    item1=<span class="string">&#x27;0&#x27;</span>.repeat(<span class="number">4</span>-item1.length)+item1</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">if</span>(item2.length&lt;<span class="number">4</span>)&#123;</span><br><span class="line">    item2=<span class="string">&#x27;0&#x27;</span>.repeat(<span class="number">4</span>-item2.length)+item2</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> item1.concat(item2)</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 4.转化成base64编码：</span></span><br><span class="line"><span class="comment">//a 将上面的二进制转换位每6位截取一次然后前面补00，通过对应的8位二进制转换位10进制通过ascci表找到对应的数</span></span><br><span class="line"><span class="keyword">let</span> str2 = res.join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> list2 = []</span><br><span class="line"><span class="keyword">let</span> list3 = str2.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;list3.length;)&#123;</span><br><span class="line">  list2.push(<span class="string">&#x27;00&#x27;</span>+list3.splice(<span class="number">0</span>,<span class="number">6</span>).join(<span class="string">&#x27;&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// base64转换中，每三个字符为一组，不足的用= 补位</span></span><br><span class="line"><span class="keyword">let</span> trail = <span class="string">&#x27;=&#x27;</span>.repeat(<span class="number">3</span>-(list2.length%<span class="number">3</span>))</span><br><span class="line"><span class="keyword">let</span> list4 = []</span><br><span class="line">list2.forEach(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> item = (<span class="string">`0b<span class="subst">$&#123;el&#125;</span>`</span>-<span class="number">0b0</span>).toString(<span class="number">10</span>)</span><br><span class="line">  list4.push(item)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">let</span> baseStr = <span class="string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span> </span><br><span class="line"><span class="keyword">let</span> list5 = []</span><br><span class="line">list4.forEach(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> num = <span class="built_in">parseInt</span>(el)</span><br><span class="line">  list5.push(baseStr.charAt(num))</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(list5.join(<span class="string">&#x27;&#x27;</span>)+trail)</span><br></pre></td></tr></table></figure>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-
-  
-
-
-
-      
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
-    </div>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      
 
-      
+            <div class="cover-btns">
+                <a href="#articles" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>开始阅读
+                </a>
 
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">smartwange</span>
+                
+                    <a href="https://github.com/smartwange" class="waves-effect waves-light btn" target="_blank">
+                        <i class="fab fa-github-alt"></i>Github
+                    </a>
+                
+            </div>
+            <div class="cover-social-link">
+    <a href="https://github.com/smartwange" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1628946931@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1628946931" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1628946931" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
-
+        </div>
     </div>
-  </footer>
 
-  
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+    
+</div>
 
-  
+<script>
+    $(function () {
+        let coverSlider = $('.carousel');
+
+        //用户触摸轮播自动 restartPlay 是否生效
+        let initUserPressedOrDraggedActive = false
+
+        //用户触摸轮播自动 restartPlay
+        function initUserPressedOrDragged(instance) {
+            setInterval(() => {
+                if (instance.pressed || instance.dragged) {
+                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
+                    restartPlay()
+                }
+            }, 1000)
+        }
+
+        coverSlider.carousel({
+            duration: Number('120'),
+            fullWidth: true,
+            indicators: 'true' === 'true',
+            onCycleTo() {
+                if (!initUserPressedOrDraggedActive) {
+                    // console.log('initUserPressedOrDraggedActive')
+                    initUserPressedOrDragged(this)
+                    initUserPressedOrDraggedActive = true
+                }
+            },
+        })
+
+        let carouselIntervalId;
+        
+        // Loop to call the next cover article picture.
+        let autoCarousel = function () {
+            carouselIntervalId = setInterval(function () {
+                coverSlider.carousel('next');
+            }, 5000);
+        };
+        autoCarousel();
+        
+
+        function restartPlay() {
+            
+            clearInterval(carouselIntervalId);
+            autoCarousel();
+            
+        };
+
+        
+        // prev and next cover post.
+        $('#prev-cover').click(function () {
+            coverSlider.carousel('prev');
+            restartPlay();
+        });
+        $('#next-cover').click(function () {
+            coverSlider.carousel('next');
+            restartPlay();
+        });
+        
+    });
+</script>
+
+
+
+<main class="content">
+
+    
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
+                        <div class="dream">
+    
+    <div class="title center-align">
+        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
+            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
+        </div>
+    </div>
+</div>
+
+                    
+
+                    
+
+                    
+
+                    
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/04/09/vue-xiang-ying-shi-yuan-li/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="vue响应式原理">
+                            
+                            <span class="card-title">vue响应式原理</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+单步调试F11 ,直接到下一步F10，F8跳到下一个断点的位置
+
+数据响应式原理Object.defineProperty
+不兼容ie8，且不可shim降解针对对象的属性做数据劫持，多个属性，需要循环
+
+let vm = &amp;#12
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/vue/" class="post-category">
+                                    vue
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/vue/">
+                            <span class="chip bg-color">vue</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/04/09/welcome/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="base64与md5混合编码">
+                            
+                            <span class="card-title">base64与md5混合编码</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                base64编码
+https://blog.csdn.net/weixin_42420703/article/details/81384901http://blog.sina.com.cn/s/blog_6291e42d0101gq2f.h
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%BC%96%E7%A0%81/" class="post-category">
+                                    编码
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/base64-md5/">
+                            <span class="chip bg-color">base64 md5</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">smartwange</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/smartwange" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1628946931@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
 
 
 
@@ -442,6 +678,9 @@
 
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1628946931" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1628946931" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
 
 
 
@@ -449,19 +688,176 @@
 
 
 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
-  
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
 
 
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
 
 
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
+    <!-- Baidu Analytics -->
 
+    <!-- Baidu Push -->
 
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
 
-  
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
-  
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
 
 </body>
+
 </html>

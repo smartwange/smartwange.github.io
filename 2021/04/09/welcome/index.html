@@ -1,250 +1,500 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
-
-<script class="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
-  </script>
-
-  <meta name="description" content="base64编码 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42420703&#x2F;article&#x2F;details&#x2F;81384901http:&#x2F;&#x2F;blog.sina.com.cn&#x2F;s&#x2F;blog_6291e42d0101gq2f.html  英文dog进行base64编码过程  1、一个字节8位，d o g 通过转换为unicode再转化为二进制（str.charCodeAt(0).toS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="base64与md5混合编码">
-<meta property="og:url" content="http://example.com/2021/04/09/welcome/index.html">
-<meta property="og:site_name" content="smartwange personal site">
-<meta property="og:description" content="base64编码 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_42420703&#x2F;article&#x2F;details&#x2F;81384901http:&#x2F;&#x2F;blog.sina.com.cn&#x2F;s&#x2F;blog_6291e42d0101gq2f.html  英文dog进行base64编码过程  1、一个字节8位，d o g 通过转换为unicode再转化为二进制（str.charCodeAt(0).toS">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-09T02:30:28.000Z">
-<meta property="article:modified_time" content="2021-04-09T02:50:35.325Z">
-<meta property="article:author" content="smartwange">
-<meta name="twitter:card" content="summary">
+    <meta charset="utf-8">
+    <meta name="keywords" content="base64与md5混合编码, smartwange personal site">
+    <meta name="description" content="技术分享与生活随笔">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<link rel="canonical" href="http://example.com/2021/04/09/welcome/">
+    <title>base64与md5混合编码 | smartwange personal site</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="smartwange personal site" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
-<script class="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>base64与md5混合编码 | smartwange personal site</title>
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">smartwange personal site</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
   
-
-
-
-
-
-
-  <noscript>
-  <style>
-  body { margin-top: 2rem; }
-
-  .use-motion .menu-item,
-  .use-motion .sidebar,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">smartwange personal site</h1>
-      <i class="logo-line"></i>
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
     </a>
-      <p class="site-subtitle" itemprop="description">(-_-)</p>
-  </div>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
 
+<div id="mobile-nav" class="side-nav sidenav">
 
-
-
-
-
-
-</div>
+    <div class="mobile-head bg-color">
         
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#base64%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">base64编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8B%B1%E6%96%87dog%E8%BF%9B%E8%A1%8Cbase64%E7%BC%96%E7%A0%81%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">英文dog进行base64编码过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base64%E4%B8%8Emd5%E6%B7%B7%E5%90%88%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">base64与md5混合编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
-      </section>
-      <!--/noindex-->
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">smartwange</p>
-  <div class="site-description" itemprop="description">技术分享与生活随笔</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </section>
+        <div class="logo-name">smartwange personal site</div>
+        <div class="logo-desc">
+            
+            技术分享与生活随笔
+            
+        </div>
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-      
-
-      
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/09/welcome/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="smartwange">
-      <meta itemprop="description" content="技术分享与生活随笔">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="smartwange personal site">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          base64与md5混合编码
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-04-09 10:30:28 / 修改时间：10:50:35" itemprop="dateCreated datePublished" datetime="2021-04-09T10:30:28+08:00">2021-04-09</time>
-    </span>
-
-  
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
 </div>
+
 
         </div>
-      </header>
+
+        
+    </nav>
+
+</header>
 
     
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">base64与md5混合编码</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
     
-    
-    <div class="post-body" itemprop="articleBody">
-        <h1 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h1><blockquote>
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/base64-md5/">
+                                <span class="chip bg-color">base64 md5</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A0%81/" class="post-category">
+                                编码
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-04-09
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42420703/article/details/81384901">https://blog.csdn.net/weixin_42420703/article/details/81384901</a><br><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_6291e42d0101gq2f.html">http://blog.sina.com.cn/s/blog_6291e42d0101gq2f.html</a></p>
 </blockquote>
 <h2 id="英文dog进行base64编码过程"><a href="#英文dog进行base64编码过程" class="headerlink" title="英文dog进行base64编码过程"></a>英文dog进行base64编码过程</h2><p>  1、一个字节8位，d o g 通过转换为unicode再转化为二进制（str.charCodeAt(0).toString(2)）对照找到对应的8位二进制表示方法<br>  a 97    d 100  o  111   g  103<br>0110 0100<br>0110 1111<br>0110 0111<br>2、将24位每份6位进行分割<br>011001   000110    111101    100111<br>3、再将上面的分组改为标准的8位字节，每组前加上00<br>00011001    00000110    00111101    00100111<br>4、在将上面的二进制分别转换位10进制   (<code>0b$&#123;el&#125;</code>-0b0).toString(10)<br>25  6   61  39<br>5、base64 从0开始分别找到对应位置的字符<br>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789=/<br>str.charAt(25) = Z<br>str.charAt(6) = G<br>str.charAt(61) = 9<br>str.charAt(39) = n<br>6、dog通过base64编码后是ZG9n<br>7、通过js自带方法btoa、atob处理<br>编码 btoa(‘dog’) = ‘ZG9n’<br>解码 atob(‘ZG9n’) = ‘dog’</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Base64 = &#123;</span><br><span class="line">	_keyStr: <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=&quot;</span>,</span><br><span class="line">	encode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> n, r, i, s, o, u, a;</span><br><span class="line">		<span class="keyword">var</span> f = <span class="number">0</span>;</span><br><span class="line">		e = Base64._utf8_encode(e);</span><br><span class="line">    <span class="built_in">console</span>.log(e)</span><br><span class="line">		<span class="keyword">while</span> (f &lt; e.length) &#123;</span><br><span class="line">      <span class="comment">// 通过encode(&#x27;dog&#x27;)理解</span></span><br><span class="line">      <span class="comment">// 实现了一次自增，先计算后自增</span></span><br><span class="line">			n = e.charCodeAt(f++);   <span class="comment">// f :0</span></span><br><span class="line">			r = e.charCodeAt(f++);   <span class="comment">// f:1</span></span><br><span class="line">			i = e.charCodeAt(f++);   <span class="comment">// f: 2</span></span><br><span class="line">      <span class="comment">// console.log(n,r,i)  //100 111 103</span></span><br><span class="line">			s = n &gt;&gt; <span class="number">2</span>;  <span class="comment">// 位运算右移2位，相当于除以2的2次方  s= 25</span></span><br><span class="line">      <span class="comment">// 100和3的与计算 两个位都为1时，结果才为1，100（110 0100）&amp; 3（00 0011）结果是0</span></span><br><span class="line">      <span class="comment">// 0左移4位乘以2的4次方，0</span></span><br><span class="line">      <span class="comment">// r 此时是111右移4位除16取整结果是 6</span></span><br><span class="line">      <span class="comment">// o = 0(0 0000) | 6(0 0110) = 0110   |或 两个位都为0时，结果才为0</span></span><br><span class="line">			o = (n &amp; <span class="number">3</span>) &lt;&lt; <span class="number">4</span> | r &gt;&gt; <span class="number">4</span>; </span><br><span class="line">      <span class="comment">// r &amp; 15 = 15 ； 15&lt;&lt;2 =15*4=60; 103&gt;&gt;6 =103/64 = 1; 60(111100) | 1(0001) = 61(111101)</span></span><br><span class="line">			u = (r &amp; <span class="number">15</span>) &lt;&lt; <span class="number">2</span> | i &gt;&gt; <span class="number">6</span>;</span><br><span class="line">      <span class="comment">// 103 &amp; 63 = 39</span></span><br><span class="line">			a = i &amp; <span class="number">63</span>;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">isNaN</span>(r)) &#123;</span><br><span class="line">				u = a = <span class="number">64</span></span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">isNaN</span>(i)) &#123;</span><br><span class="line">				a = <span class="number">64</span></span><br><span class="line">			&#125;</span><br><span class="line">			t = t + <span class="built_in">this</span>._keyStr.charAt(s) + <span class="built_in">this</span>._keyStr.charAt(o) + <span class="built_in">this</span>._keyStr.charAt(u) + <span class="built_in">this</span>._keyStr.charAt(a)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;,</span><br><span class="line">	decode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> n, r, i;</span><br><span class="line">		<span class="keyword">var</span> s, o, u, a;</span><br><span class="line">		<span class="keyword">var</span> f = <span class="number">0</span>;</span><br><span class="line">		e = e.replace(<span class="regexp">/[^A-Za-z0-9+/=]/g</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">		<span class="keyword">while</span> (f &lt; e.length) &#123;</span><br><span class="line">			s = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			o = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			u = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			a = <span class="built_in">this</span>._keyStr.indexOf(e.charAt(f++));</span><br><span class="line">			n = s &lt;&lt; <span class="number">2</span> | o &gt;&gt; <span class="number">4</span>;</span><br><span class="line">			r = (o &amp; <span class="number">15</span>) &lt;&lt; <span class="number">4</span> | u &gt;&gt; <span class="number">2</span>;</span><br><span class="line">			i = (u &amp; <span class="number">3</span>) &lt;&lt; <span class="number">6</span> | a;</span><br><span class="line">			t = t + <span class="built_in">String</span>.fromCharCode(n);</span><br><span class="line">			<span class="keyword">if</span> (u != <span class="number">64</span>) &#123;</span><br><span class="line">				t = t + <span class="built_in">String</span>.fromCharCode(r)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (a != <span class="number">64</span>) &#123;</span><br><span class="line">				t = t + <span class="built_in">String</span>.fromCharCode(i)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		t = Base64._utf8_decode(t);</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;,</span><br><span class="line">	_utf8_encode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		e = e.replace(<span class="regexp">/rn/g</span>, <span class="string">&quot;n&quot;</span>);</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> n = <span class="number">0</span>; n &lt; e.length; n++) &#123;</span><br><span class="line">			<span class="keyword">var</span> r = e.charCodeAt(n);  <span class="comment">//得到每一个字符的Unicode编码，如a 97</span></span><br><span class="line">			<span class="keyword">if</span> (r &lt; <span class="number">128</span>) &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r)</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (r &gt; <span class="number">127</span> &amp;&amp; r &lt; <span class="number">2048</span>) &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &gt;&gt; <span class="number">6</span> | <span class="number">192</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &gt;&gt; <span class="number">12</span> | <span class="number">224</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &gt;&gt; <span class="number">6</span> &amp; <span class="number">63</span> | <span class="number">128</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;,</span><br><span class="line">	_utf8_decode: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> t = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">var</span> r = c1 = c2 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (n &lt; e.length) &#123;</span><br><span class="line">			r = e.charCodeAt(n);</span><br><span class="line">			<span class="keyword">if</span> (r &lt; <span class="number">128</span>) &#123;</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode(r);</span><br><span class="line">				n++</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (r &gt; <span class="number">191</span> &amp;&amp; r &lt; <span class="number">224</span>) &#123;</span><br><span class="line">				c2 = e.charCodeAt(n + <span class="number">1</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode((r &amp; <span class="number">31</span>) &lt;&lt; <span class="number">6</span> | c2 &amp; <span class="number">63</span>);</span><br><span class="line">				n += <span class="number">2</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				c2 = e.charCodeAt(n + <span class="number">1</span>);</span><br><span class="line">				c3 = e.charCodeAt(n + <span class="number">2</span>);</span><br><span class="line">				t += <span class="built_in">String</span>.fromCharCode((r &amp; <span class="number">15</span>) &lt;&lt; <span class="number">12</span> | (c2 &amp; <span class="number">63</span>) &lt;&lt; <span class="number">6</span> | c3 &amp; <span class="number">63</span>);</span><br><span class="line">				n += <span class="number">3</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> t</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Base64.encode(<span class="string">&#x27;dog&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> Base64 <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    _keyStr<span class="token punctuation">:</span> <span class="token string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="</span><span class="token punctuation">,</span>
+    encode<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> n<span class="token punctuation">,</span> r<span class="token punctuation">,</span> i<span class="token punctuation">,</span> s<span class="token punctuation">,</span> o<span class="token punctuation">,</span> u<span class="token punctuation">,</span> a<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        e <span class="token operator">=</span> Base64<span class="token punctuation">.</span><span class="token function">_utf8_encode</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>f <span class="token operator">&lt;</span> e<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 通过encode('dog')理解</span>
+      <span class="token comment" spellcheck="true">// 实现了一次自增，先计算后自增</span>
+            n <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// f :0</span>
+            r <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// f:1</span>
+            i <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// f: 2</span>
+      <span class="token comment" spellcheck="true">// console.log(n,r,i)  //100 111 103</span>
+            s <span class="token operator">=</span> n <span class="token operator">></span><span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 位运算右移2位，相当于除以2的2次方  s= 25</span>
+      <span class="token comment" spellcheck="true">// 100和3的与计算 两个位都为1时，结果才为1，100（110 0100）&amp; 3（00 0011）结果是0</span>
+      <span class="token comment" spellcheck="true">// 0左移4位乘以2的4次方，0</span>
+      <span class="token comment" spellcheck="true">// r 此时是111右移4位除16取整结果是 6</span>
+      <span class="token comment" spellcheck="true">// o = 0(0 0000) | 6(0 0110) = 0110   |或 两个位都为0时，结果才为0</span>
+            o <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">|</span> r <span class="token operator">></span><span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span> 
+      <span class="token comment" spellcheck="true">// r &amp; 15 = 15 ； 15&lt;&lt;2 =15*4=60; 103>>6 =103/64 = 1; 60(111100) | 1(0001) = 61(111101)</span>
+            u <span class="token operator">=</span> <span class="token punctuation">(</span>r <span class="token operator">&amp;</span> <span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">|</span> i <span class="token operator">></span><span class="token operator">></span> <span class="token number">6</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 103 &amp; 63 = 39</span>
+            a <span class="token operator">=</span> i <span class="token operator">&amp;</span> <span class="token number">63</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                u <span class="token operator">=</span> a <span class="token operator">=</span> <span class="token number">64</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                a <span class="token operator">=</span> <span class="token number">64</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            t <span class="token operator">=</span> t <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> t
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+    decode<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> n<span class="token punctuation">,</span> r<span class="token punctuation">,</span> i<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> s<span class="token punctuation">,</span> o<span class="token punctuation">,</span> u<span class="token punctuation">,</span> a<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        e <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/[^A-Za-z0-9+/=]/g</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>f <span class="token operator">&lt;</span> e<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            s <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            o <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            u <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            a <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_keyStr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>f<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            n <span class="token operator">=</span> s <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">|</span> o <span class="token operator">></span><span class="token operator">></span> <span class="token number">4</span><span class="token punctuation">;</span>
+            r <span class="token operator">=</span> <span class="token punctuation">(</span>o <span class="token operator">&amp;</span> <span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">4</span> <span class="token operator">|</span> u <span class="token operator">></span><span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">;</span>
+            i <span class="token operator">=</span> <span class="token punctuation">(</span>u <span class="token operator">&amp;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">6</span> <span class="token operator">|</span> a<span class="token punctuation">;</span>
+            t <span class="token operator">=</span> t <span class="token operator">+</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>u <span class="token operator">!=</span> <span class="token number">64</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                t <span class="token operator">=</span> t <span class="token operator">+</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token number">64</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                t <span class="token operator">=</span> t <span class="token operator">+</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        t <span class="token operator">=</span> Base64<span class="token punctuation">.</span><span class="token function">_utf8_decode</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> t
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+    _utf8_encode<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        e <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/rn/g</span><span class="token punctuation">,</span> <span class="token string">"n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> n <span class="token operator">&lt;</span> e<span class="token punctuation">.</span>length<span class="token punctuation">;</span> n<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> r <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//得到每一个字符的Unicode编码，如a 97</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">&lt;</span> <span class="token number">128</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">></span> <span class="token number">127</span> <span class="token operator">&amp;&amp;</span> r <span class="token operator">&lt;</span> <span class="token number">2048</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r <span class="token operator">></span><span class="token operator">></span> <span class="token number">6</span> <span class="token operator">|</span> <span class="token number">192</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r <span class="token operator">&amp;</span> <span class="token number">63</span> <span class="token operator">|</span> <span class="token number">128</span><span class="token punctuation">)</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r <span class="token operator">></span><span class="token operator">></span> <span class="token number">12</span> <span class="token operator">|</span> <span class="token number">224</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r <span class="token operator">></span><span class="token operator">></span> <span class="token number">6</span> <span class="token operator">&amp;</span> <span class="token number">63</span> <span class="token operator">|</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r <span class="token operator">&amp;</span> <span class="token number">63</span> <span class="token operator">|</span> <span class="token number">128</span><span class="token punctuation">)</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> t
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+    _utf8_decode<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> t <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> r <span class="token operator">=</span> c1 <span class="token operator">=</span> c2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> e<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            r <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">&lt;</span> <span class="token number">128</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                n<span class="token operator">++</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>r <span class="token operator">></span> <span class="token number">191</span> <span class="token operator">&amp;&amp;</span> r <span class="token operator">&lt;</span> <span class="token number">224</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                c2 <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token punctuation">(</span>r <span class="token operator">&amp;</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">6</span> <span class="token operator">|</span> c2 <span class="token operator">&amp;</span> <span class="token number">63</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                n <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                c2 <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                c3 <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                t <span class="token operator">+</span><span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token punctuation">(</span>r <span class="token operator">&amp;</span> <span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">12</span> <span class="token operator">|</span> <span class="token punctuation">(</span>c2 <span class="token operator">&amp;</span> <span class="token number">63</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">6</span> <span class="token operator">|</span> c3 <span class="token operator">&amp;</span> <span class="token number">63</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                n <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">3</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> t
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Base64<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">'dog'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
 <blockquote>
 <p>Base64 .encode先把要加密的字符串转换位utf-8的格式，然后对字符串进行遍历，每三个一组，每组每个字符用8位二进制表示，切割成每6位一份，所以会有4份对应函数中的4个变量 s  o  u  a<br>然后每组前添00，相当于位运算中&gt;&gt;2,  再转换位10进制，通过charAt计算结果</p>
 </blockquote>
@@ -257,104 +507,606 @@
 - i = e.charCodeAt(f++);此处的i就是NaN，就是64刚好是最后一位 =
 </code></pre>
 <h2 id="base64与md5混合编码"><a href="#base64与md5混合编码" class="headerlink" title="base64与md5混合编码"></a>base64与md5混合编码</h2><p>1、通过npm包 blueimp-md5 将要编码的字符串转换为32位的16进制<br>2、将32位密文拆分位16个2位16进制数组，接下来把所有数组中的16进制数转换成8位2进制数，然后将16个8位2进制数组连接起来形成一个128位二进制数；（再将数组中每个元素的16进制转换为2进制   得到16个8位的二进制<br>）<br>3、第三步，从第二步生成的128位2进制数每次截取6位并补全为8位2进制数，按照8位2进制数所代表的1O进制索引查找Base64编码表，得到对应的密文。 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> md5 = <span class="built_in">require</span>(<span class="string">&#x27;blueimp-md5&#x27;</span>)</span><br><span class="line"><span class="comment">// 1.通过md5将test字符串转换为32位的16进制</span></span><br><span class="line"><span class="keyword">const</span> str = md5(<span class="string">&#x27;test&#x27;</span>) <span class="comment">//098f6bcd4621d373cade4e832627b4f6  </span></span><br><span class="line"><span class="comment">// 2.将32位转换为 16个 2位的16进制</span></span><br><span class="line"><span class="keyword">let</span> list = str.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> newList = []</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span> ;i&lt;list.length;)&#123;</span><br><span class="line">   newList.push(list.splice(i,<span class="number">2</span>).join(<span class="string">&#x27;&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 3.再将数组中每个元素的16进制转换为2进制   得到16个8位的二进制</span></span><br><span class="line"><span class="keyword">let</span> res = newList.map(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> item1= (<span class="string">`0x<span class="subst">$&#123;el.charAt(<span class="number">0</span>)&#125;</span>`</span>-<span class="number">0x0</span>).toString(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">let</span> item2= (<span class="string">`0x<span class="subst">$&#123;el.charAt(<span class="number">1</span>)&#125;</span>`</span>-<span class="number">0x0</span>).toString(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">if</span>(item1.length&lt;<span class="number">4</span>)&#123;</span><br><span class="line">    item1=<span class="string">&#x27;0&#x27;</span>.repeat(<span class="number">4</span>-item1.length)+item1</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">if</span>(item2.length&lt;<span class="number">4</span>)&#123;</span><br><span class="line">    item2=<span class="string">&#x27;0&#x27;</span>.repeat(<span class="number">4</span>-item2.length)+item2</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> item1.concat(item2)</span><br><span class="line">  </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 4.转化成base64编码：</span></span><br><span class="line"><span class="comment">//a 将上面的二进制转换位每6位截取一次然后前面补00，通过对应的8位二进制转换位10进制通过ascci表找到对应的数</span></span><br><span class="line"><span class="keyword">let</span> str2 = res.join(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> list2 = []</span><br><span class="line"><span class="keyword">let</span> list3 = str2.split(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;list3.length;)&#123;</span><br><span class="line">  list2.push(<span class="string">&#x27;00&#x27;</span>+list3.splice(<span class="number">0</span>,<span class="number">6</span>).join(<span class="string">&#x27;&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// base64转换中，每三个字符为一组，不足的用= 补位</span></span><br><span class="line"><span class="keyword">let</span> trail = <span class="string">&#x27;=&#x27;</span>.repeat(<span class="number">3</span>-(list2.length%<span class="number">3</span>))</span><br><span class="line"><span class="keyword">let</span> list4 = []</span><br><span class="line">list2.forEach(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> item = (<span class="string">`0b<span class="subst">$&#123;el&#125;</span>`</span>-<span class="number">0b0</span>).toString(<span class="number">10</span>)</span><br><span class="line">  list4.push(item)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">let</span> baseStr = <span class="string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span> </span><br><span class="line"><span class="keyword">let</span> list5 = []</span><br><span class="line">list4.forEach(<span class="function"><span class="params">el</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> num = <span class="built_in">parseInt</span>(el)</span><br><span class="line">  list5.push(baseStr.charAt(num))</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(list5.join(<span class="string">&#x27;&#x27;</span>)+trail)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> md5 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'blueimp-md5'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 1.通过md5将test字符串转换为32位的16进制</span>
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//098f6bcd4621d373cade4e832627b4f6  </span>
+<span class="token comment" spellcheck="true">// 2.将32位转换为 16个 2位的16进制</span>
+<span class="token keyword">let</span> list <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> newList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span>i<span class="token operator">&lt;</span>list<span class="token punctuation">.</span>length<span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+   newList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 3.再将数组中每个元素的16进制转换为2进制   得到16个8位的二进制</span>
+<span class="token keyword">let</span> res <span class="token operator">=</span> newList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>el<span class="token operator">=</span><span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> item1<span class="token operator">=</span> <span class="token punctuation">(</span><span class="token template-string"><span class="token string">`0x$&amp;#123;el.charAt(0)&amp;#125;`</span></span><span class="token operator">-</span><span class="token number">0x0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token keyword">let</span> item2<span class="token operator">=</span> <span class="token punctuation">(</span><span class="token template-string"><span class="token string">`0x$&amp;#123;el.charAt(1)&amp;#125;`</span></span><span class="token operator">-</span><span class="token number">0x0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>item1<span class="token punctuation">.</span>length<span class="token operator">&lt;</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    item1<span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">-</span>item1<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token operator">+</span>item1
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> 
+  <span class="token keyword">if</span><span class="token punctuation">(</span>item2<span class="token punctuation">.</span>length<span class="token operator">&lt;</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    item2<span class="token operator">=</span><span class="token string">'0'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token operator">-</span>item2<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token operator">+</span>item2
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> item1<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>item2<span class="token punctuation">)</span>
+  
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 4.转化成base64编码：</span>
+<span class="token comment" spellcheck="true">//a 将上面的二进制转换位每6位截取一次然后前面补00，通过对应的8位二进制转换位10进制通过ascci表找到对应的数</span>
+<span class="token keyword">let</span> str2 <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> list2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> list3 <span class="token operator">=</span> str2<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>list3<span class="token punctuation">.</span>length<span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  list2<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'00'</span><span class="token operator">+</span>list3<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// base64转换中，每三个字符为一组，不足的用= 补位</span>
+<span class="token keyword">let</span> trail <span class="token operator">=</span> <span class="token string">'='</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token operator">-</span><span class="token punctuation">(</span>list2<span class="token punctuation">.</span>length<span class="token operator">%</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> list4 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+list2<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>el<span class="token operator">=</span><span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> item <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token template-string"><span class="token string">`0b$&amp;#123;el&amp;#125;`</span></span><span class="token operator">-</span><span class="token number">0b0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+  list4<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> baseStr <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'</span> 
+<span class="token keyword">let</span> list5 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+list4<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>el<span class="token operator">=</span><span class="token operator">></span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+  list5<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>baseStr<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list5<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token operator">+</span>trail<span class="token punctuation">)</span>
+</code></pre>
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">smartwange</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2021/04/09/welcome/">http://example.com/2021/04/09/welcome/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">smartwange</a>
+                    !
+                </span>
+            </div>
+        
     </div>
 
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/base64-md5/">
+                                    <span class="chip bg-color">base64 md5</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
     
-    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
     
 
-    <footer class="post-footer">
+    
 
-        
+</div>
 
-          <div class="post-nav">
-            <div class="post-nav-item">
+                </div>
             </div>
-            <div class="post-nav-item">
-                <a href="/2021/04/09/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" rel="next" title="vue响应式原理">
-                  vue响应式原理 <i class="fa fa-chevron-right"></i>
-                </a>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
             </div>
-          </div>
-    </footer>
-  </article>
-  
-  
-  
-
-
-
-      
+        </div>
+    </div>
+</div>
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+    $(function () {
+        $('.tabs').tabs();
     });
-  }
 </script>
 
+            
+        </div>
     </div>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      
+    
 
-      
+    
 
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">smartwange</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/04/09/vue-xiang-ying-shi-yuan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="vue响应式原理">
+                        
+                        <span class="card-title">vue响应式原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/vue/" class="post-category">
+                                    vue
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/vue/">
+                        <span class="chip bg-color">vue</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/04/09/welcome/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="base64与md5混合编码">
+                        
+                        <span class="card-title">base64与md5混合编码</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A0%81/" class="post-category">
+                                    编码
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/base64-md5/">
+                        <span class="chip bg-color">base64 md5</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
 
     </div>
-  </footer>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
 
-  
-  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<!-- TOC 悬浮按钮. -->
 
-  
-
-
-
-
-
-
-
-
-
-
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
 
 
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
 
 
 
-  
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">smartwange</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/smartwange" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1628946931@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
 
 
 
@@ -362,10 +1114,186 @@
 
 
 
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1628946931" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1628946931" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
 
-  
 
-  
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
 
 </body>
+
 </html>
